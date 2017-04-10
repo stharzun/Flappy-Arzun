@@ -54,8 +54,17 @@ public class Tube {
     public void reposition(float x){
         posTopTube.set(x,random.nextInt(FLUCTUATION)+TUBE_GAP+LOWEST_OPENING);
         posBotTube.set(x,posTopTube.y-TUBE_GAP-bottomTube.getHeight());
+
+        boundsTop.setPosition(posTopTube.x,posTopTube.y);
+        boundBot.setPosition(posBotTube.x,posBotTube.y);
     }
     public  boolean collides(Rectangle player){
         return player.overlaps(boundsTop)||player.overlaps(boundBot);
+    }
+
+
+    public void dispose() {
+        topTube.dispose();
+        bottomTube.dispose();
     }
 }
